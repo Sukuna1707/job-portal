@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Akshay's professional resume website showcasing skills in DevOps, Cloud, and AI.">
+    <meta name="keywords" content="Akshay, DevOps, Cloud Engineer, AI, Computer Science, Resume, Portfolio, Linux, Docker, AWS, Terraform">
+    <title>Akshay | Resume</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0ea5e9; /* A professional blue */
+            --secondary-color: #94a3b8; /* Slate gray */
+            --background-dark: #0f0f0f;
+            --surface-dark: #1f2937; /* A subtle dark gray */
+            --text-light: #e2e8f0;
+            --shadow-color: rgba(14, 165, 233, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background: var(--background-dark);
+            color: var(--text-light);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle animated background gradient */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, var(--surface-dark) 0%, transparent 40%),
+                        radial-gradient(circle at bottom right, var(--surface-dark) 0%, transparent 40%);
+            z-index: -1;
+            opacity: 0.2;
+            animation: moveGradient 15s infinite alternate;
+        }
+
+        @keyframes moveGradient {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(20px, 20px);
+            }
+        }
+        
+        .noise {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJuIj48ZmVDaGFubmVsTWl4ZXIgdHlwZT0ibm9pc2UiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMDAwMDAwIiBmaWx0ZXI9InVybCgjbikiLz48L3N2Zz4=');
+            background-repeat: repeat;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        header {
+            text-align: center;
+            padding: 5rem 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            text-shadow: 0 0 20px var(--shadow-color);
+        }
+
+        header p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--secondary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.8rem;
+            background: var(--primary-color);
+            color: var(--background-dark);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        nav {
+            background: rgba(15, 15, 15, 0.9);
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        nav a {
+            color: var(--text-light);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s, transform 0.2s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 0.8s ease-out;
+        }
+
+        section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+            text-shadow: 0 0 15px var(--shadow-color);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .skills-list span {
+            background: var(--surface-dark);
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skills-list span:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--shadow-color);
+        }
+        
+        .projects-grid, .education-details, .contact-details {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .project {
+            background: var(--surface-dark);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--shadow-color);
+        }
+
+        .project h3 {
+            margin-bottom: 0.75rem;
+            color: var(--primary-color);
+        }
+        
+        .project p {
+            color: var(--secondary-color);
+        }
+
+        .education-details p, .contact-details p {
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .contact-details a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-details a:hover {
+            color: var(--primary-color);
+        }
+        
+        .contact-details .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: var(--primary-color);
+        }
+
+        footer {
+            background: rgba(15, 15, 15, 0.9);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+
+    <header>
+        <h1>Akshay</h1>
+        <p>DevOps Engineer | Cloud & AI Enthusiast</p>
+        <a href="#" class="btn" download>Download Resume</a>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p style="text-align: center;">Hello! I’m Akshay, a Computer Science graduate with strong skills in DevOps, Linux, and Cloud technologies. I’m passionate about building scalable, secure systems and automating workflows to solve complex challenges. My career goal is to become a top DevOps professional and make a global impact with technology.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <span>Linux</span>
+                <span>Git & GitHub</span>
+                <span>Docker</span>
+                <span>Kubernetes</span>
+                <span>AWS</span>
+                <span>GCP</span>
+                <span>Azure</span>
+                <span>Terraform</span>
+                <span>CI/CD</span>
+                <span>Shell Scripting</span>
+                <span>Python</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project">
+                    <h3>Multi-Cloud CI/CD Pipeline</h3>
+                    <p>Designed and implemented an automated CI/CD pipeline using **Jenkins**, **Docker**, and **Terraform** to deploy applications across both AWS and GCP, demonstrating multi-cloud proficiency.</p>
+                </div>
+                <div class="project">
+                    <h3>Secure Blockchain Evidence System</h3>
+                    <p>Developed a proof-of-concept for a secure, tamper-proof evidence management system using **Blockchain** and **IPFS** (InterPlanetary File System), ensuring transparency and immutability.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-details">
+                <p><b>B.Tech in Computer Science</b> - Graduated 2025</p>
+                <p><b>Placement:</b> IBM Associate System Engineer</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-details">
+                <p>Email: <a href="mailto:akshay@example.com">akshay@example.com</a></p>
+                <div class="social-links">
+                    <a href="https://github.com/yourgithub" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/yourlinkedin" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/yourtwitter" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Akshay. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
